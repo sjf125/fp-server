@@ -9,7 +9,7 @@
     "node": "4.5.0"
   },
   "dependencies": {
-    "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
     "cors": "^2.7.1",
     "debug": "~2.2.0",
