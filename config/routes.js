@@ -17,6 +17,10 @@ module.exports = require('lib/wiring/routes')
 .delete('/sign-out/:id', 'users#signout')
 .patch('/change-password/:id', 'users#changepw')
 .resources('users', { only: ['index', 'show'] })
+.get('/vehicles-regular', 'vehicles#regular')
+.get('/vehicles-term', 'vehicles#term')
+.get('/vehicles-valet', 'vehicles#valet')
+.get('/vehicles-count', 'vehicles#count')
 
 // vehicle routes
 // .get('/vehicles/:id', 'vehicles#show')

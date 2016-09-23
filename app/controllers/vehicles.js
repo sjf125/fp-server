@@ -37,9 +37,43 @@ const destroy = (req, res, next) => {
     .catch(err => next(err));
 };
 
+
+// Not sure how to get totals for piechart out of API
+const regular = (req, res, next) => {
+  Vehicle.count({ type: 'Regular' })
+    .then(count => res.json({ count }))
+    .catch(err => next(err));
+};
+
+const term = (req, res, next) => {
+  Vehicle.count({ type: 'Term' })
+    .then(count => res.json({ count }))
+    .catch(err => next(err));
+};
+
+const valet = (req, res, next) => {
+  Vehicle.count({ type: 'Valet' })
+    .then(vehicles => res.json({ vehicles }))
+    .catch(err => next(err));
+};
+
+const count = (req, res, next) => {
+  Vehicle.aggregate(
+    { $group:
+      { _id: '$type', total: { $sum: 1 } }
+    }
+  )
+    .then(vehicles => res.json({ vehicles }))
+    .catch(err => next(err));
+};
+
 module.exports = {
   index,
   show,
   create,
   destroy,
+  regular,
+  term,
+  valet,
+  count
 };
