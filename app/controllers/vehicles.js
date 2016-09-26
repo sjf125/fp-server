@@ -52,8 +52,5 @@ module.exports = {
   show,
   create,
   destroy,
-  regular,
-  term,
-  valet,
   count
 };
